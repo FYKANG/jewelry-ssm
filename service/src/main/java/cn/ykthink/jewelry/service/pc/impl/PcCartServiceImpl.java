@@ -1,6 +1,6 @@
 package cn.ykthink.jewelry.service.pc.impl;
 
-import cn.ykthink.jewelry.core.exception.cmsException.storeException;
+import cn.ykthink.jewelry.core.exception.cmsException.StoreException;
 import cn.ykthink.jewelry.core.support.http.ResponseEntitySupport;
 import cn.ykthink.jewelry.core.untils.JWTokenUtil;
 import cn.ykthink.jewelry.model.common.po.OrderCommodityPO;
@@ -132,7 +132,7 @@ public class PcCartServiceImpl implements PcCartService {
             if (storeCheck == 0) {
                 //库存不足异常
                 String commodityMessage = pcCartMapper.selectCartCommodityMessage(cartCommodityUuid);
-                throw new storeException(commodityMessage);
+                throw new StoreException(commodityMessage);
             }
         }
         return ResponseEntitySupport.success();

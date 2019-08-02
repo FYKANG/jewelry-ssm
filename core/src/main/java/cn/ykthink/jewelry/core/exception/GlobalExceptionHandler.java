@@ -2,7 +2,7 @@ package cn.ykthink.jewelry.core.exception;
 
 
 import cn.ykthink.jewelry.core.constant.HttpResponseConstant;
-import cn.ykthink.jewelry.core.exception.cmsException.storeException;
+import cn.ykthink.jewelry.core.exception.cmsException.StoreException;
 import cn.ykthink.jewelry.core.support.http.ResponseEntitySupport;
 import lombok.extern.log4j.Log4j2;
 import net.sf.json.JSONObject;
@@ -67,9 +67,9 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler(storeException.class)
+    @ExceptionHandler(StoreException.class)
     @ResponseBody
-    public ResponseEntity<Object> handleStoreException(storeException  e) {
+    public ResponseEntity<Object> handleStoreException(StoreException e) {
         log.error("库存不足异常：", e);
         return ResponseEntitySupport.error(HttpStatus.FORBIDDEN, e.getMessage()+"库存不足", e.getMessage()+"Inventory shortage");
     }
